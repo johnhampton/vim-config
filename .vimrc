@@ -244,6 +244,9 @@ map <Leader>vx :VimuxInterruptRunner<CR>
 " Zoom the runner pane (use <bind-key> z to restore runner pane)
 map <Leader>vz :call VimuxZoomRunner()<CR>
 
+" Vitality
+let g:vitality_always_assume_iterm = 1
+
 " Vimux
 let VimuxUseNearest = 0
 
