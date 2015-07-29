@@ -13,7 +13,7 @@ call neobundle#begin(expand('~/.vim/bundle'))
 
 " Let NeoBundle manage NeoBundle
 " Required:
-" NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundleFetch 'Shougo/neobundle.vim'
 
 " vimproc
 NeoBundle 'Shougo/vimproc.vim', {
