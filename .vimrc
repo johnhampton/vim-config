@@ -61,7 +61,7 @@ NeoBundle 'tpope/vim-vinegar'
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
-"NeoBundle 'bentayloruk/vim-react-es6-snippets'
+NeoBundle 'bentayloruk/vim-react-es6-snippets'
 
 " Ruby / Ruby on Rails Plugins
 NeoBundle 'skalnik/vim-vroom'
@@ -195,7 +195,7 @@ endfunction
 
 " neocomplete
 let g:neocomplete#enable_at_startup = 1
-"let  g:neosnippet#enable_snipmate_compatibility = 1
+let  g:neosnippet#enable_snipmate_compatibility = 1
 
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
