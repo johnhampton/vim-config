@@ -35,6 +35,7 @@ NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'benmills/vimux'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'christoomey/vim-tmux-navigator'
+NeoBundle 'ConradIrwin/vim-bracketed-paste'
 
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'd11wtq/ctrlp_bdelete.vim'
