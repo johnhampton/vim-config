@@ -41,14 +41,17 @@ NeoBundle 'd11wtq/ctrlp_bdelete.vim'
 
 NeoBundle 'dr-chip-vim-scripts/ZoomWin'
 NeoBundle 'edkolev/tmuxline.vim', { 'terminal': 1 }
-NeoBundle 'rizzatti/dash.vim'
 NeoBundle 'flazz/vim-colorschemes'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'mileszs/ack.vim'
+NeoBundle 'Peeja/vim-cdo'
+NeoBundle 'qpkorr/vim-bufkill'
+NeoBundle 'rizzatti/dash.vim'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/syntastic'
+NeoBundle 'Shougo/junkfile.vim'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tpope/vim-fugitive'
@@ -151,6 +154,14 @@ nmap <silent> <leader>fef :call Preserve("normal gg=G")<CR>
 " Strip trailing whitespace
 nmap <silent> <leader>f$ :call StripTrailingWhitespace()<CR>
 
+" Delete buffer, leave split
+nmap <silent> <C-W>! :BD<CR>
+
+" Ack
+if executable('ag')
+  let g:ackprg = 'ag --nogroup --nocolor --column'
+endif
+
 " Airline
 set laststatus=2                             " Show status bar all the time (default is
                                              " only with splits)
@@ -217,6 +228,11 @@ let g:syntastic_auto_loc_list = 2
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
+
+" Standard Automagic Reforma
+"autocmd bufwritepost *.js silent !standard --parser babel-eslint --format %
+"autocmd bufwritepost *.jsx silent !standard --parser babel-eslint --format %
+"set autoread
 
 "if !has('gui_running')
   "let g:syntastic_full_redraws = 1
