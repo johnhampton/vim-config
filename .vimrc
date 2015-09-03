@@ -53,6 +53,11 @@ NeoBundle 'rizzatti/dash.vim'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'Shougo/junkfile.vim'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimfiler.vim'
+NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'Shougo/unite-outline'
+NeoBundle 'tsukkee/unite-help'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tpope/vim-fugitive'
@@ -80,7 +85,7 @@ NeoBundle 'elzr/vim-json'
 
 " React
 NeoBundle 'mxw/vim-jsx', { 'depends': 'pangloss/vim-javascript' }
-NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'pangloss/vim-javascript', 'develop'
 
 " Required:
 call neobundle#end()
@@ -161,6 +166,7 @@ nmap <silent> <C-W>! :BD<CR>
 " Ack
 if executable('ag')
   let g:ackprg = 'ag --nogroup --nocolor --column'
+  let g:unite_source_rec_async_command = ['ag', '--follow', '--hidden', '--nocolor', '--nogroup', '-g', '']
 endif
 
 " Airline
@@ -260,6 +266,20 @@ map <Leader>vx :VimuxInterruptRunner<CR>
 
 " Zoom the runner pane (use <bind-key> z to restore runner pane)
 map <Leader>vz :call VimuxZoomRunner()<CR>
+
+" Unite
+let g:unite_source_history_yank_enable = 1
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_rank'])
+nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files -ignorecase  -smartcase  -start-insert file_rec/async:!<cr>
+nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files  -start-insert file<cr>
+nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru   -start-insert file_mru<cr>
+nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
+nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
+nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=buffer buffer<cr>
+
+" VimFiler
+let g:vimfiler_as_default_explorer = 1
 
 " Vitality
 let g:vitality_always_assume_iterm = 1
