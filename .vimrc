@@ -43,7 +43,6 @@ NeoBundle 'tacahiroy/ctrlp-funky'
 
 NeoBundle 'dr-chip-vim-scripts/ZoomWin'
 NeoBundle 'edkolev/tmuxline.vim', { 'terminal': 1 }
-NeoBundle 'flazz/vim-colorschemes'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'Lokaltog/vim-easymotion'
@@ -66,6 +65,10 @@ NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'tpope/vim-vinegar'
+
+" Colorschemes
+NeoBundle 'flazz/vim-colorschemes'
+NeoBundle 'yosiat/oceanic-next-vim'
 
 " Completion and Snippets
 NeoBundle 'Shougo/neocomplete'
@@ -272,12 +275,12 @@ map <Leader>vz :call VimuxZoomRunner()<CR>
 let g:unite_source_history_yank_enable = 1
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
-nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files -ignorecase  -smartcase  -start-insert file_rec/async:!<cr>
-nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files  -start-insert file<cr>
-nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru   -start-insert file_mru<cr>
+nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files -ignorecase -smartcase -start-insert file_rec/async:!<cr>
+nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files -start-insert file<cr>
+nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru -start-insert file_mru<cr>
 nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
-nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
-nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=buffer buffer<cr>
+nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank history/yank<cr>
+nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=buffer -start-insert buffer<cr>
 
 " VimFiler
 let g:vimfiler_as_default_explorer = 1
