@@ -123,6 +123,9 @@ syntax enable
 set noswapfile
 
 colorscheme jellybeans
+if has('gui_running')
+  set guifont=Sauce\ Code\ Powerline:h13
+endif
 
 " Ignores
 set wildignore+=*.o,*.obj,.git,*.rbc,*.gem,*.zip,*.tar,*.tar.gz
