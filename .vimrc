@@ -116,6 +116,10 @@ if !has('gui_running')
   set <M-p>=p
 endif
 
+if has('gui_macvim') && has('gui_running')
+  set macmeta
+endif
+
 " Enable syntax highlighting
 syntax enable
 
