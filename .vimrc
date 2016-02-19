@@ -129,7 +129,7 @@ set noswapfile
 
 colorscheme jellybeans
 if has('gui_running')
-  set guifont=Sauce\ Code\ Powerline:h13
+  set guifont=Sauce\ Code\ Powerline:h14
 endif
 
 " Ignores
