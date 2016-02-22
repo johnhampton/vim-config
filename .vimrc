@@ -69,7 +69,8 @@ NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'tpope/vim-vinegar'
 
 " Colorschemes
-NeoBundle 'flazz/vim-colorschemes'
+" NeoBundle 'flazz/vim-colorschemes'
+NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'yosiat/oceanic-next-vim'
 
 " Completion and Snippets
@@ -187,6 +188,7 @@ set laststatus=2                             " Show status bar all the time (def
                                              " only with splits)
 let g:airline_powerline_fonts = 1            " Use the nice fonts
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='jellybeans'
 set noshowmode                               " Airline gives us a nice indicator
 
 " AutoPairs
