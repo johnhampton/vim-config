@@ -43,6 +43,7 @@ NeoBundle 'd11wtq/ctrlp_bdelete.vim'
 NeoBundle 'tacahiroy/ctrlp-funky'
 
 NeoBundle 'dr-chip-vim-scripts/ZoomWin'
+NeoBundle 'direnv/direnv.vim'
 NeoBundle 'edkolev/tmuxline.vim', { 'terminal': 1 }
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'jiangmiao/auto-pairs'
