@@ -48,6 +48,8 @@ NeoBundle 'edkolev/tmuxline.vim', { 'terminal': 1 }
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'hashivim/vim-terraform'
 NeoBundle 'jiangmiao/auto-pairs'
+NeoBundle 'lambdalisue/vim-gista'
+NeoBundle 'lambdalisue/vim-gista-unite'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'mileszs/ack.vim'
 NeoBundle 'Peeja/vim-cdo'
