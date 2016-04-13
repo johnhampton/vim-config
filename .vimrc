@@ -38,10 +38,6 @@ NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'christoomey/vim-tmux-navigator'
 NeoBundle 'ConradIrwin/vim-bracketed-paste'
 
-NeoBundle 'ctrlpvim/ctrlp.vim'
-NeoBundle 'd11wtq/ctrlp_bdelete.vim'
-NeoBundle 'tacahiroy/ctrlp-funky'
-
 NeoBundle 'dr-chip-vim-scripts/ZoomWin'
 NeoBundle 'direnv/direnv.vim'
 NeoBundle 'edkolev/tmuxline.vim', { 'terminal': 1 }
@@ -52,6 +48,7 @@ NeoBundle 'lambdalisue/vim-gista'
 NeoBundle 'lambdalisue/vim-gista-unite'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'mileszs/ack.vim'
+NeoBundle 'mbbill/undotree'
 NeoBundle 'Peeja/vim-cdo'
 NeoBundle 'qpkorr/vim-bufkill'
 NeoBundle 'rizzatti/dash.vim'
@@ -98,6 +95,9 @@ NeoBundle 'elzr/vim-json'
 " React
 NeoBundle 'mxw/vim-jsx', { 'depends': 'pangloss/vim-javascript' }
 NeoBundle 'pangloss/vim-javascript', 'develop'
+
+" Enable JSX highlight in .js files
+let g:jsx_ext_required = 0
 
 " Required:
 call neobundle#end()
@@ -198,17 +198,6 @@ set noshowmode                               " Airline gives us a nice indicator
 
 " AutoPairs
 let g:AutoPairsFlyMode = 1
-
-" Ctrl-P
-let g:ctrlp_match_window = 'results:100' " overcome limit imposed by max height"
-let g:ctrlp_custom_ignore = {
-  \ 'dir': '\v[\/](node_modules|build)$'
-\ }
-
-nmap <leader>b :CtrlPBuffer<CR>
-nmap <leader>mru :CtrlPMRUFiles<CR>
-
-call ctrlp_bdelete#init()
 
 " Dash
 nmap <silent> <leader>d <Plug>DashSearch
