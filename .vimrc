@@ -1,114 +1,106 @@
-"NeoBundle Scripts-----------------------------
-if has('vim_starting')
-  if &compatible
-    set nocompatible               " Be iMproved
-  endif
-
-  " Required:
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
+"dein Scripts-----------------------------
+if &compatible
+  set nocompatible               " Be iMproved
 endif
 
 " Required:
-call neobundle#begin(expand('~/.vim/bundle'))
+set runtimepath^=~/.vim/bundle/repos/github.com/Shougo/dein.vim
 
-" Let NeoBundle manage NeoBundle
 " Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
+call dein#begin(expand('~/.vim/bundle'))
 
-" vimproc
-NeoBundle 'Shougo/vimproc.vim', {
-\ 'build' : {
-\     'windows' : 'tools\\update-dll-mingw',
-\     'cygwin' : 'make -f make_cygwin.mak',
-\     'mac' : 'make -f make_mac.mak',
-\     'linux' : 'make',
-\     'unix' : 'gmake',
-\    },
-\ }
+" Let dein manage dein
+" Required:
+call dein#add('Shougo/dein.vim')
+
 
 " Sane Defaults
-NeoBundle 'tpope/vim-sensible'
+call dein#add('tpope/vim-sensible')
+
+call dein#add('Shougo/vimproc.vim', {'build': 'make'})
 
 " Universal plugins
-NeoBundle 'aaronjensen/vitality.vim'
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'benmills/vimux'
-NeoBundle 'vim-airline/vim-airline'
-NeoBundle 'vim-airline/vim-airline-themes'
-NeoBundle 'christoomey/vim-tmux-navigator'
-NeoBundle 'ConradIrwin/vim-bracketed-paste'
+call dein#add('aaronjensen/vitality.vim')
+call dein#add('airblade/vim-gitgutter')
+call dein#add('benmills/vimux')
+call dein#add('vim-airline/vim-airline')
+call dein#add('vim-airline/vim-airline-themes')
+call dein#add('christoomey/vim-tmux-navigator')
+call dein#add('ConradIrwin/vim-bracketed-paste')
 
-NeoBundle 'dr-chip-vim-scripts/ZoomWin'
-NeoBundle 'direnv/direnv.vim'
-NeoBundle 'edkolev/tmuxline.vim', { 'terminal': 1 }
-NeoBundle 'godlygeek/tabular'
-NeoBundle 'hashivim/vim-terraform'
-NeoBundle 'jiangmiao/auto-pairs'
-NeoBundle 'lambdalisue/vim-gista'
-NeoBundle 'lambdalisue/vim-gista-unite'
-NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'mileszs/ack.vim'
-NeoBundle 'mbbill/undotree'
-NeoBundle 'Peeja/vim-cdo'
-NeoBundle 'qpkorr/vim-bufkill'
-NeoBundle 'rizzatti/dash.vim'
-NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'shime/vim-livedown'
-NeoBundle 'Shougo/junkfile.vim'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neoyank.vim'
-NeoBundle 'Shougo/vimfiler.vim'
-NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'Shougo/unite-outline'
-NeoBundle 'tsukkee/unite-help'
-NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'tpope/vim-endwise'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-repeat'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'tpope/vim-unimpaired'
-NeoBundle 'tpope/vim-vinegar'
+call dein#add('dr-chip-vim-scripts/ZoomWin')
+call dein#add('direnv/direnv.vim')
+
+" TODO Figure out how to replicate this functionality
+"call dein#add('edkolev/tmuxline.vim', { 'terminal': 1 })
+call dein#add('edkolev/tmuxline.vim')
+
+call dein#add('godlygeek/tabular')
+call dein#add('hashivim/vim-terraform')
+call dein#add('jiangmiao/auto-pairs')
+call dein#add('lambdalisue/vim-gista')
+call dein#add('lambdalisue/vim-gista-unite')
+call dein#add('Lokaltog/vim-easymotion')
+call dein#add('mileszs/ack.vim')
+call dein#add('mbbill/undotree')
+call dein#add('Peeja/vim-cdo')
+call dein#add('qpkorr/vim-bufkill')
+call dein#add('rizzatti/dash.vim')
+call dein#add('scrooloose/nerdcommenter')
+call dein#add('scrooloose/syntastic')
+call dein#add('shime/vim-livedown')
+call dein#add('Shougo/junkfile.vim')
+call dein#add('Shougo/unite.vim')
+call dein#add('Shougo/neoyank.vim')
+call dein#add('Shougo/vimfiler.vim')
+call dein#add('Shougo/neomru.vim')
+call dein#add('Shougo/unite-outline')
+call dein#add('tsukkee/unite-help')
+call dein#add('terryma/vim-multiple-cursors')
+call dein#add('tpope/vim-endwise')
+call dein#add('tpope/vim-fugitive')
+call dein#add('tpope/vim-repeat')
+call dein#add('tpope/vim-surround')
+call dein#add('tpope/vim-unimpaired')
+call dein#add('tpope/vim-vinegar')
 
 " Colorschemes
-" NeoBundle 'flazz/vim-colorschemes'
-NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'yosiat/oceanic-next-vim'
+" call dein#add('flazz/vim-colorschemes')
+call dein#add('nanotech/jellybeans.vim')
+call dein#add('yosiat/oceanic-next-vim')
 
 " Completion and Snippets
-NeoBundle 'Shougo/neocomplete'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'bentayloruk/vim-react-es6-snippets'
+call dein#add('Shougo/neocomplete')
+call dein#add('Shougo/neosnippet')
+call dein#add('Shougo/neosnippet-snippets')
+call dein#add('bentayloruk/vim-react-es6-snippets')
 
 " Ruby / Ruby on Rails Plugins
-NeoBundle 'skalnik/vim-vroom'
-NeoBundle 'tpope/vim-bundler'
-NeoBundle 'tpope/vim-rails'
-NeoBundle 'vim-ruby/vim-ruby'
+call dein#add('skalnik/vim-vroom')
+call dein#add('tpope/vim-bundler')
+call dein#add('tpope/vim-rails')
+call dein#add('vim-ruby/vim-ruby')
 
 " Ember
-NeoBundle 'dsawardekar/ember.vim', { 'depends': 'dsawardekar/portkey' }
-NeoBundle 'mustache/vim-mustache-handlebars'
-NeoBundle 'elzr/vim-json'
+call dein#add('dsawardekar/ember.vim', { 'depends': 'dsawardekar/portkey' })
+call dein#add('mustache/vim-mustache-handlebars')
+call dein#add('elzr/vim-json')
 
 " React
-NeoBundle 'mxw/vim-jsx', { 'depends': 'pangloss/vim-javascript' }
-NeoBundle 'pangloss/vim-javascript', 'develop'
-
-" Enable JSX highlight in .js files
-let g:jsx_ext_required = 0
-
+call dein#add('mxw/vim-jsx', { 'depends': 'pangloss/vim-javascript' })
+call dein#add('pangloss/vim-javascript', {'rev': 'develop'})
 " Required:
-call neobundle#end()
+call dein#end()
 
 " Required:
 filetype plugin indent on
 
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
-"End NeoBundle Scripts-------------------------
+" If you want to install not installed plugins on startup.
+"if dein#check_install()
+"  call dein#install()
+"endif
+
+"End dein Scripts-------------------------
 
 " Use ',' instead of '\' as the leader key
 let mapleader=','
@@ -244,6 +236,8 @@ let g:syntastic_auto_loc_list = 2
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
+
+let g:jsx_ext_required = 0
 
 " Standard Automagic Reforma
 "autocmd bufwritepost *.js silent !standard --parser babel-eslint --format %
