@@ -13,7 +13,6 @@ call dein#begin(expand('~/.vim/bundle'))
 " Required:
 call dein#add('Shougo/dein.vim')
 
-
 " Sane Defaults
 call dein#add('tpope/vim-sensible')
 
@@ -279,6 +278,14 @@ nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru -start-insert file_mru
 nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
 nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank history/yank<cr>
 nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=buffer -start-insert buffer<cr>
+
+nnoremap <silent> <leader>g :<C-u>Unite grep:. -buffer-name=search-buffer<cr>
+if executable('ag')
+  let g:unite_source_rec_async_command = 'ag --nocolor --nogroup --hidden -g ""'
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts = '--nocolor --nogroup --hidden'
+  let g:unite_source_grep_recursive_opt=''
+endif
 
 " VimFiler
 let g:vimfiler_as_default_explorer = 1
