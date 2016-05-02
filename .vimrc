@@ -21,7 +21,7 @@ call dein#add('Shougo/vimproc.vim', {'build': 'make'})
 " Universal plugins
 call dein#add('aaronjensen/vitality.vim')
 call dein#add('airblade/vim-gitgutter')
-call dein#add('benmills/vimux')
+call dein#add('benmills/vimux', {'if': !has('gui_running')})
 call dein#add('vim-airline/vim-airline')
 call dein#add('vim-airline/vim-airline-themes')
 call dein#add('christoomey/vim-tmux-navigator')
@@ -87,7 +87,8 @@ call dein#add('elzr/vim-json')
 
 " React
 call dein#add('mxw/vim-jsx', { 'depends': 'pangloss/vim-javascript' })
-call dein#add('pangloss/vim-javascript', {'rev': 'develop'})
+"call dein#add('pangloss/vim-javascript', {'rev': 'develop'})
+call dein#add('pangloss/vim-javascript')
 " Required:
 call dein#end()
 
