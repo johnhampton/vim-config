@@ -174,12 +174,6 @@ nmap <silent> <leader>f$ :call StripTrailingWhitespace()<CR>
 " Delete buffer, leave split
 nmap <silent> <C-W>! :BD<CR>
 
-" Ack
-if executable('ag')
-  let g:ackprg = 'ag --nogroup --nocolor --column'
-  let g:unite_source_rec_async_command = ['ag', '--follow', '--hidden', '--nocolor', '--nogroup', '-g', '']
-endif
-
 " Airline
 set laststatus=2                             " Show status bar all the time (default is
                                              " only with splits)
@@ -271,6 +265,11 @@ map <Leader>vx :VimuxInterruptRunner<CR>
 map <Leader>vz :call VimuxZoomRunner()<CR>
 
 " Unite
+call unite#custom#source('file_rec/async', 'ignore_pattern', join([
+  \ 'node_modules/',
+  \ 'bower_components/',
+  \ '\.terraform',
+  \ ], '\|'))
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files -ignorecase -smartcase -start-insert file_rec/async:!<cr>
@@ -281,8 +280,10 @@ nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank history/yank<cr>
 nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=buffer -start-insert buffer<cr>
 
 nnoremap <silent> <leader>g :<C-u>Unite grep:. -buffer-name=search-buffer<cr>
+
 if executable('ag')
-  let g:unite_source_rec_async_command = 'ag --nocolor --nogroup --hidden -g ""'
+  let g:ackprg = 'ag --nogroup --nocolor --column'
+  let g:unite_source_rec_async_command = 'ag --follow --nocolor --nogroup --hidden -g ""'
   let g:unite_source_grep_command = 'ag'
   let g:unite_source_grep_default_opts = '--nocolor --nogroup --hidden'
   let g:unite_source_grep_recursive_opt=''
