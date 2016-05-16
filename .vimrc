@@ -244,6 +244,15 @@ let g:jsx_ext_required = 0
 
 "let g:syntastic_javascript_jsxhint_args = '-babel'
 
+
+" Tabular
+if exists(":Tabularize")
+  nmap <Leader>a= :Tabularize /=<CR>
+  vmap <Leader>a= :Tabularize /=<CR>
+  nmap <Leader>a: :Tabularize /:\zs<CR>
+  vmap <Leader>a: :Tabularize /:\zs<CR>
+endif
+
 " Vimux
 
 " Prompt for a command to run
