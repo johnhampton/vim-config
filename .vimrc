@@ -34,7 +34,12 @@ call dein#add('direnv/direnv.vim')
 "call dein#add('edkolev/tmuxline.vim', { 'terminal': 1 })
 call dein#add('edkolev/tmuxline.vim')
 
-call dein#add('godlygeek/tabular')
+call dein#add('godlygeek/tabular', {
+      \ 'hook_add': join(['nmap ,a= :Tabularize /=<CR>',
+      \ 'vmap ,a= :Tabularize /=<CR>',
+      \ 'nmap ,a: :Tabularize /:\zs<CR>',
+      \ 'vmap ,a: :Tabularize /:\zs<CR>'], "\n")
+      \ })
 call dein#add('hashivim/vim-terraform')
 call dein#add('jiangmiao/auto-pairs')
 call dein#add('lambdalisue/vim-gista')
@@ -243,15 +248,6 @@ let g:jsx_ext_required = 0
 "endif
 
 "let g:syntastic_javascript_jsxhint_args = '-babel'
-
-
-" Tabular
-if exists(":Tabularize")
-  nmap <Leader>a= :Tabularize /=<CR>
-  vmap <Leader>a= :Tabularize /=<CR>
-  nmap <Leader>a: :Tabularize /:\zs<CR>
-  vmap <Leader>a: :Tabularize /:\zs<CR>
-endif
 
 " Vimux
 
