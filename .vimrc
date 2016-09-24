@@ -284,7 +284,7 @@ nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline -start-insert outl
 nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank history/yank<cr>
 nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=buffer -start-insert buffer<cr>
 
-nnoremap <silent> <leader>g :<C-u>Unite grep:. -buffer-name=search-buffer<cr>
+nnoremap <silent> <leader>g :<C-u>Unite -no-quit -buffer-name=search-buffer grep:.<cr>
 
 if executable('ag')
   let g:ackprg = 'ag --nogroup --nocolor --column'
