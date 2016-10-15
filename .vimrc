@@ -1,111 +1,91 @@
-"dein Scripts-----------------------------
-if &compatible
-  set nocompatible               " Be iMproved
+"Begin vim-plug---------------------------
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
-" Required:
-set runtimepath^=~/.vim/bundle/repos/github.com/Shougo/dein.vim
+function! Cond(cond, ...)
+  let opts = get(a:000, 0, {})
+  return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
+endfunction
 
-" Required:
-call dein#begin(expand('~/.vim/bundle'))
-
-" Let dein manage dein
-" Required:
-call dein#add('Shougo/dein.vim')
-
-" Sane Defaults
-call dein#add('tpope/vim-sensible')
-
-call dein#add('Shougo/vimproc.vim', {'build': 'make'})
+call plug#begin()
+Plug 'tpope/vim-sensible'
+Plug 'Shougo/vimproc.vim', {'do': 'make'}
 
 " Universal plugins
-call dein#add('aaronjensen/vitality.vim')
-call dein#add('airblade/vim-gitgutter')
-call dein#add('benmills/vimux', {'if': !has('gui_running')})
-call dein#add('vim-airline/vim-airline')
-call dein#add('vim-airline/vim-airline-themes')
-call dein#add('christoomey/vim-tmux-navigator')
-call dein#add('ConradIrwin/vim-bracketed-paste')
+Plug 'aaronjensen/vitality.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'benmills/vimux', Cond(!has('gui_running'))
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'ConradIrwin/vim-bracketed-paste'
 
-call dein#add('dr-chip-vim-scripts/ZoomWin')
-call dein#add('direnv/direnv.vim')
+Plug 'dr-chip-vim-scripts/ZoomWin'
+Plug 'direnv/direnv.vim'
 
 " TODO Figure out how to replicate this functionality
-"call dein#add('edkolev/tmuxline.vim', { 'terminal': 1 })
-call dein#add('edkolev/tmuxline.vim')
+"Plug 'edkolev/tmuxline.vim', { 'terminal': 1 }
+Plug 'edkolev/tmuxline.vim'
 
-call dein#add('godlygeek/tabular', {
-      \ 'hook_add': join(['nmap ,a= :Tabularize /=<CR>',
-      \ 'vmap ,a= :Tabularize /=<CR>',
-      \ 'nmap ,a: :Tabularize /:\zs<CR>',
-      \ 'vmap ,a: :Tabularize /:\zs<CR>'], "\n")
-      \ })
-call dein#add('hashivim/vim-terraform')
-call dein#add('jiangmiao/auto-pairs')
-call dein#add('lambdalisue/vim-gista')
-call dein#add('lambdalisue/vim-gista-unite')
-call dein#add('Lokaltog/vim-easymotion')
-call dein#add('mileszs/ack.vim')
-call dein#add('mbbill/undotree')
-call dein#add('Peeja/vim-cdo')
-call dein#add('qpkorr/vim-bufkill')
-call dein#add('rizzatti/dash.vim')
-call dein#add('scrooloose/nerdcommenter')
-call dein#add('scrooloose/syntastic')
-call dein#add('shime/vim-livedown')
-call dein#add('Shougo/junkfile.vim')
-call dein#add('Shougo/unite.vim')
-call dein#add('Shougo/neoyank.vim')
-call dein#add('Shougo/vimfiler.vim')
-call dein#add('Shougo/neomru.vim')
-call dein#add('Shougo/unite-outline')
-call dein#add('tsukkee/unite-help')
-call dein#add('terryma/vim-multiple-cursors')
-call dein#add('tpope/vim-endwise')
-call dein#add('tpope/vim-fugitive')
-call dein#add('tpope/vim-repeat')
-call dein#add('tpope/vim-surround')
-call dein#add('tpope/vim-unimpaired')
-call dein#add('tpope/vim-vinegar')
+Plug 'godlygeek/tabular'
+Plug 'hashivim/vim-terraform'
+Plug 'jiangmiao/auto-pairs'
+Plug 'lambdalisue/vim-gista'
+Plug 'lambdalisue/vim-gista-unite'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'mileszs/ack.vim'
+Plug 'mbbill/undotree'
+Plug 'Peeja/vim-cdo'
+Plug 'qpkorr/vim-bufkill'
+Plug 'rizzatti/dash.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/syntastic'
+Plug 'shime/vim-livedown'
+Plug 'Shougo/junkfile.vim'
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/neoyank.vim'
+Plug 'Shougo/vimfiler.vim'
+Plug 'Shougo/neomru.vim'
+Plug 'Shougo/unite-outline'
+Plug 'tsukkee/unite-help'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-vinegar'
 
 " Colorschemes
-" call dein#add('flazz/vim-colorschemes')
-call dein#add('nanotech/jellybeans.vim')
-call dein#add('yosiat/oceanic-next-vim')
+" Plug 'flazz/vim-colorschemes'
+Plug 'nanotech/jellybeans.vim'
+Plug 'yosiat/oceanic-next-vim'
 
 " Completion and Snippets
-call dein#add('Shougo/neocomplete')
-call dein#add('Shougo/neosnippet')
-call dein#add('Shougo/neosnippet-snippets')
-call dein#add('bentayloruk/vim-react-es6-snippets')
+Plug 'Shougo/neocomplete'
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'bentayloruk/vim-react-es6-snippets'
 
 " Ruby / Ruby on Rails Plugins
-call dein#add('skalnik/vim-vroom')
-call dein#add('tpope/vim-bundler')
-call dein#add('tpope/vim-rails')
-call dein#add('vim-ruby/vim-ruby')
+Plug 'skalnik/vim-vroom'
+Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-rails'
+Plug 'vim-ruby/vim-ruby'
 
 " Ember
-call dein#add('dsawardekar/ember.vim', { 'depends': 'dsawardekar/portkey' })
-call dein#add('mustache/vim-mustache-handlebars')
-call dein#add('elzr/vim-json')
+Plug 'dsawardekar/portkey' | Plug 'dsawardekar/ember.vim'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'elzr/vim-json'
 
-" React
-call dein#add('mxw/vim-jsx', { 'depends': 'pangloss/vim-javascript' })
-"call dein#add('pangloss/vim-javascript', {'rev': 'develop'})
-call dein#add('pangloss/vim-javascript')
-" Required:
-call dein#end()
-
-" Required:
-filetype plugin indent on
-
-" If you want to install not installed plugins on startup.
-"if dein#check_install()
-"  call dein#install()
-"endif
-
-"End dein Scripts-------------------------
+Plug 'pangloss/vim-javascript' | Plug 'mxw/vim-jsx'
+Plug 'maksimr/vim-jsbeautify'
+Plug 'mtscout6/syntastic-local-eslint.vim'
+call plug#end()
+"End vim-plug-----------------------------
 
 " Use ',' instead of '\' as the leader key
 let mapleader=','
@@ -172,6 +152,16 @@ nmap <silent> <leader><Space> :nohlsearch<CR>
 
 " Format entire file
 nmap <silent> <leader>fef :call Preserve("normal gg=G")<CR>
+autocmd FileType javascript noremap <buffer>  <leader>fef :call JsBeautify()<cr>
+autocmd FileType json noremap <buffer> <leader>fef :call JsonBeautify()<cr>
+autocmd FileType jsx noremap <buffer> <leader>fef :call JsxBeautify()<cr>
+autocmd FileType html noremap <buffer> <leader>fef :call HtmlBeautify()<cr>
+autocmd FileType css noremap <buffer> <leader>fef :call CSSBeautify()<cr>
+autocmd FileType javascript vnoremap <buffer>  <leader>fef :call RangeJsBeautify()<cr>
+autocmd FileType json vnoremap <buffer> <leader>fef :call RangeJsonBeautify()<cr>
+autocmd FileType jsx vnoremap <buffer> <leader>fef :call RangeJsxBeautify()<cr>
+autocmd FileType html vnoremap <buffer> <leader>fef :call RangeHtmlBeautify()<cr>
+autocmd FileType css vnoremap <buffer> <leader>fef :call RangeCSSBeautify()<cr>
 
 " Strip trailing whitespace
 nmap <silent> <leader>f$ :call StripTrailingWhitespace()<CR>
@@ -248,6 +238,12 @@ let g:jsx_ext_required = 0
 "endif
 
 "let g:syntastic_javascript_jsxhint_args = '-babel'
+
+" Tabular
+nmap ,a= :Tabularize /=<CR>
+vmap ,a= :Tabularize /=<CR>
+nmap ,a: :Tabularize /:\zs<CR>
+vmap ,a: :Tabularize /:\zs<CR>
 
 " Vimux
 
