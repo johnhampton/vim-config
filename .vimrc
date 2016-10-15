@@ -163,6 +163,9 @@ set number          " Display line numbers
 set relativenumber  " Line numbers should be relative
 set cursorline      " Highlight the current line
 
+" gp selects previous text
+nnoremap gp `[v`]
+
 " Redraw
 noremap <F5> <C-L>
 
