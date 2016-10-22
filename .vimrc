@@ -1,7 +1,7 @@
 "Begin vim-plug---------------------------
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
@@ -34,7 +34,7 @@ Plug 'godlygeek/tabular'
 Plug 'hashivim/vim-terraform'
 Plug 'jiangmiao/auto-pairs'
 Plug 'lambdalisue/vim-gista'
-Plug 'lambdalisue/vim-gista-unite'
+      \| Plug 'lambdalisue/vim-gista-unite'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'mileszs/ack.vim'
 Plug 'mbbill/undotree'
@@ -42,15 +42,19 @@ Plug 'Peeja/vim-cdo'
 Plug 'qpkorr/vim-bufkill'
 Plug 'rizzatti/dash.vim'
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/syntastic'
+
+Plug 'neomake/neomake'
+Plug 'benjie/neomake-local-eslint.vim'
+
 Plug 'shime/vim-livedown'
 Plug 'Shougo/junkfile.vim'
-Plug 'Shougo/unite.vim'
-Plug 'Shougo/neoyank.vim'
-Plug 'Shougo/vimfiler.vim'
+Plug 'Shougo/unite.vim' 
+      \| Plug 'Shougo/unite-outline'
+      \| Plug 'Shougo/vimfiler.vim'
+      \| Plug 'tsukkee/unite-help'
+      \| Plug 'Shougo/neoyank.vim'
 Plug 'Shougo/neomru.vim'
-Plug 'Shougo/unite-outline'
-Plug 'tsukkee/unite-help'
+
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
@@ -83,7 +87,6 @@ Plug 'elzr/vim-json'
 
 Plug 'pangloss/vim-javascript' | Plug 'mxw/vim-jsx'
 Plug 'maksimr/vim-jsbeautify'
-Plug 'mtscout6/syntastic-local-eslint.vim'
 call plug#end()
 "End vim-plug-----------------------------
 
@@ -157,12 +160,12 @@ nmap <silent> <leader><Space> :nohlsearch<CR>
 nmap <silent> <leader>fef :call Preserve("normal gg=G")<CR>
 autocmd FileType javascript noremap <buffer>  <leader>fef :call JsBeautify()<cr>
 autocmd FileType json noremap <buffer> <leader>fef :call JsonBeautify()<cr>
-autocmd FileType jsx noremap <buffer> <leader>fef :call JsxBeautify()<cr>
+autocmd FileType javascript.jsx noremap <buffer> <leader>fef :call JsxBeautify()<cr>
 autocmd FileType html noremap <buffer> <leader>fef :call HtmlBeautify()<cr>
 autocmd FileType css noremap <buffer> <leader>fef :call CSSBeautify()<cr>
 autocmd FileType javascript vnoremap <buffer>  <leader>fef :call RangeJsBeautify()<cr>
 autocmd FileType json vnoremap <buffer> <leader>fef :call RangeJsonBeautify()<cr>
-autocmd FileType jsx vnoremap <buffer> <leader>fef :call RangeJsxBeautify()<cr>
+autocmd FileType javascript.jsx vnoremap <buffer> <leader>fef :call RangeJsxBeautify()<cr>
 autocmd FileType html vnoremap <buffer> <leader>fef :call RangeHtmlBeautify()<cr>
 autocmd FileType css vnoremap <buffer> <leader>fef :call RangeCSSBeautify()<cr>
 
@@ -174,7 +177,7 @@ nmap <silent> <C-W>! :BD<CR>
 
 " Airline
 set laststatus=2                             " Show status bar all the time (default is
-                                             " only with splits)
+" only with splits)
 let g:airline_powerline_fonts = 1            " Use the nice fonts
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='jellybeans'
@@ -222,25 +225,15 @@ inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplete#close_popup()
 inoremap <expr><C-e>  neocomplete#cancel_popup()
 
-" Syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 2
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
+" Neomake
+let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_json_enabled_makers = ['jsonlint']
+"let g:neomake_verbose = 0
+autocmd! BufWritePost * Neomake
+autocmd! VimLeave * let g:neomake_verbose = 0
+"autocmd! BufWritePost * let g:neomake_verbose = 1
 
-let g:jsx_ext_required = 0
-
-" Standard Automagic Reforma
-"autocmd bufwritepost *.js silent !standard --parser babel-eslint --format %
-"autocmd bufwritepost *.jsx silent !standard --parser babel-eslint --format %
-"set autoread
-
-"if !has('gui_running')
-  "let g:syntastic_full_redraws = 1
-"endif
-
-"let g:syntastic_javascript_jsxhint_args = '-babel'
+"let g:jsx_ext_required = 0
 
 " Tabular
 nmap ,a= :Tabularize /=<CR>
@@ -270,10 +263,10 @@ map <Leader>vz :call VimuxZoomRunner()<CR>
 
 " Unite
 call unite#custom#source('file_rec/async', 'ignore_pattern', join([
-  \ 'node_modules/',
-  \ 'bower_components/',
-  \ '\.terraform',
-  \ ], '\|'))
+      \ 'node_modules/',
+      \ 'bower_components/',
+      \ '\.terraform',
+      \ ], '\|'))
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files -ignorecase -smartcase -start-insert file_rec/async:!<cr>
