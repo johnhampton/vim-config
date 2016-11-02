@@ -48,7 +48,7 @@ Plug 'benjie/neomake-local-eslint.vim'
 
 Plug 'shime/vim-livedown'
 Plug 'Shougo/junkfile.vim'
-Plug 'Shougo/unite.vim' 
+Plug 'Shougo/unite.vim'
       \| Plug 'Shougo/unite-outline'
       \| Plug 'Shougo/vimfiler.vim'
       \| Plug 'tsukkee/unite-help'
