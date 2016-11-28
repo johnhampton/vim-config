@@ -1,16 +1,16 @@
 root = true
 
 [**.js]
-indent_style = space
 indent_size = 2
+indent_style = space
 brace_style = collapse-preserve-inline
 
 [**.jsx]
+brace_style = collapse-preserve-inline
 e4x = true
-indent_style = space
 indent_size = 2
+indent_style = space
 
 [**.json]
-indent_style = space
 indent_size = 2
-
+indent_style = space

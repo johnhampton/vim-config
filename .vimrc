@@ -68,6 +68,9 @@ Plug 'tpope/vim-vinegar'
 Plug 'nanotech/jellybeans.vim'
 Plug 'yosiat/oceanic-next-vim'
 
+Plug 'othree/jspc.vim'
+Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
+
 " Completion and Snippets
 Plug 'Shougo/neocomplete'
 Plug 'Shougo/neosnippet'
@@ -80,8 +83,8 @@ Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'
 
-" Ember
-Plug 'dsawardekar/portkey' | Plug 'dsawardekar/ember.vim'
+" Javascript
+" Plug 'dsawardekar/portkey' | Plug 'dsawardekar/ember.vim'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'elzr/vim-json'
 
@@ -158,16 +161,16 @@ nmap <silent> <leader><Space> :nohlsearch<CR>
 
 " Format entire file
 nmap <silent> <leader>fef :call Preserve("normal gg=G")<CR>
-autocmd FileType javascript noremap <buffer>  <leader>fef :call JsBeautify()<cr>
-autocmd FileType json noremap <buffer> <leader>fef :call JsonBeautify()<cr>
-autocmd FileType javascript.jsx noremap <buffer> <leader>fef :call JsxBeautify()<cr>
-autocmd FileType html noremap <buffer> <leader>fef :call HtmlBeautify()<cr>
-autocmd FileType css noremap <buffer> <leader>fef :call CSSBeautify()<cr>
-autocmd FileType javascript vnoremap <buffer>  <leader>fef :call RangeJsBeautify()<cr>
-autocmd FileType json vnoremap <buffer> <leader>fef :call RangeJsonBeautify()<cr>
-autocmd FileType javascript.jsx vnoremap <buffer> <leader>fef :call RangeJsxBeautify()<cr>
-autocmd FileType html vnoremap <buffer> <leader>fef :call RangeHtmlBeautify()<cr>
-autocmd FileType css vnoremap <buffer> <leader>fef :call RangeCSSBeautify()<cr>
+autocmd FileType javascript noremap <buffer> <F4> :call JsBeautify()<cr>
+autocmd FileType json noremap <buffer> <F4> :call JsonBeautify()<cr>
+autocmd FileType javascript.jsx noremap <buffer> <F4> :call JsxBeautify()<cr>
+autocmd FileType html noremap <buffer> <F4> :call HtmlBeautify()<cr>
+autocmd FileType css noremap <buffer> <F4> :call CSSBeautify()<cr>
+autocmd FileType javascript vnoremap <buffer>  <F4> :call RangeJsBeautify()<cr>
+autocmd FileType json vnoremap <buffer> <F4> :call RangeJsonBeautify()<cr>
+autocmd FileType javascript.jsx vnoremap <buffer> <F4> :call RangeJsxBeautify()<cr>
+autocmd FileType html vnoremap <buffer> <F4> :call RangeHtmlBeautify()<cr>
+autocmd FileType css vnoremap <buffer> <F4> :call RangeCSSBeautify()<cr>
 
 " Strip trailing whitespace
 nmap <silent> <leader>f$ :call StripTrailingWhitespace()<CR>
@@ -224,6 +227,34 @@ inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplete#close_popup()
 inoremap <expr><C-e>  neocomplete#cancel_popup()
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+if !exists('g:neocomplete#sources#omni#functions')
+  let g:neocomplete#sources#omni#functions = {}
+endif
+
+let g:neocomplete#sources#omni#functions.javascript = [
+      \   'jspc#omni',
+      \   'tern#Complete',
+      \ ]
+
+" Enable heavy omni completion.
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+" For perlomni.vim setting.
+" https://github.com/c9s/perlomni.vim
+let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
 " Neomake
 let g:neomake_javascript_enabled_makers = ['eslint']
