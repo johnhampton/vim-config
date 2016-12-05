@@ -15,6 +15,12 @@ Plug 'tpope/vim-sensible'
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
 
 " Universal plugins
+" Colorschemes
+Plug 'nanotech/jellybeans.vim'
+Plug 'yosiat/oceanic-next-vim'
+Plug 'trevordmiller/nova-vim'
+Plug 'altercation/vim-colors-solarized'
+
 Plug 'aaronjensen/vitality.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'benmills/vimux', Cond(!has('gui_running'))
@@ -26,8 +32,6 @@ Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'dr-chip-vim-scripts/ZoomWin'
 Plug 'direnv/direnv.vim'
 
-" TODO Figure out how to replicate this functionality
-"Plug 'edkolev/tmuxline.vim', { 'terminal': 1 }
 Plug 'edkolev/tmuxline.vim'
 
 Plug 'godlygeek/tabular'
@@ -63,10 +67,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 
-" Colorschemes
-" Plug 'flazz/vim-colorschemes'
-Plug 'nanotech/jellybeans.vim'
-Plug 'yosiat/oceanic-next-vim'
 
 Plug 'othree/jspc.vim'
 Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
@@ -116,7 +116,8 @@ syntax enable
 " No swap files please
 set noswapfile
 
-colorscheme jellybeans
+set background=dark
+colorscheme solarized
 if has('gui_running')
   set guifont=Sauce\ Code\ Powerline:h14
 endif
@@ -181,9 +182,10 @@ nmap <silent> <C-W>! :BD<CR>
 " Airline
 set laststatus=2                             " Show status bar all the time (default is
 " only with splits)
+let g:airline#extensions#tmuxline#enabled = 1
 let g:airline_powerline_fonts = 1            " Use the nice fonts
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='jellybeans'
+"let g:airline_theme='nova'
 set noshowmode                               " Airline gives us a nice indicator
 
 " AutoPairs
