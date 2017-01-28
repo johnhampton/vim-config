@@ -20,6 +20,7 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'yosiat/oceanic-next-vim'
 Plug 'trevordmiller/nova-vim'
 Plug 'altercation/vim-colors-solarized'
+Plug 'morhetz/gruvbox'
 
 Plug 'aaronjensen/vitality.vim'
 Plug 'airblade/vim-gitgutter'
@@ -117,7 +118,7 @@ syntax enable
 set noswapfile
 
 set background=dark
-colorscheme solarized
+colorscheme gruvbox
 if has('gui_running')
   set guifont=Sauce\ Code\ Powerline:h14
 endif
@@ -265,6 +266,7 @@ let g:neomake_json_enabled_makers = ['jsonlint']
 autocmd! BufWritePost * Neomake
 autocmd! VimLeave * let g:neomake_verbose = 0
 "autocmd! BufWritePost * let g:neomake_verbose = 1
+nnoremap <F8> :Neomake<cr>
 
 "let g:jsx_ext_required = 0
 
@@ -350,3 +352,6 @@ endfunction "}}}
 function! StripTrailingWhitespace() "{{{
   call Preserve("%s/\\s\\+$//e")
 endfunction "}}}
+
+autocmd BufEnter,WinEnter,InsertLeave * set cursorline
+autocmd BufLeave,WinLeave,InsertEnter * set nocursorline
