@@ -68,9 +68,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 
-
-Plug 'othree/jspc.vim'
-Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
+Plug 'othree/jspc.vim', { 'for': 'javascript' }
+Plug 'marijnh/tern_for_vim', { 'do': 'npm install', 'for': 'javascript' }
 
 " Completion and Snippets
 Plug 'Shougo/neocomplete'
@@ -315,7 +314,7 @@ nnoremap <silent> <leader>g :<C-u>Unite -no-quit -buffer-name=search-buffer grep
 
 if executable('ag')
   let g:ackprg = 'ag --nogroup --nocolor --column'
-  let g:unite_source_rec_async_command = 'ag --follow --nocolor --nogroup --hidden -g ""'
+  let g:unite_source_rec_async_command = ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', '']
   let g:unite_source_grep_command = 'ag'
   let g:unite_source_grep_default_opts = '--nocolor --nogroup --hidden'
   let g:unite_source_grep_recursive_opt=''
