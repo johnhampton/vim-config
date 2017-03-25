@@ -10,6 +10,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'jszakmeister/vim-togglecursor'
 
   Plug 'hashivim/vim-terraform'
+  Plug 'morhetz/gruvbox'
 call plug#end()
+
+set termguicolors
+colorscheme gruvbox
 
 let g:terraform_align=1
