@@ -6,5 +6,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+  Plug 'tpope/vim-sensible'
   Plug 'jszakmeister/vim-togglecursor'
 call plug#end()
