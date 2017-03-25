@@ -8,4 +8,8 @@ endif
 call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-sensible'
   Plug 'jszakmeister/vim-togglecursor'
+
+  Plug 'hashivim/vim-terraform'
 call plug#end()
+
+let g:terraform_align=1
