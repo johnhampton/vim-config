@@ -17,7 +17,19 @@ call plug#begin('~/.vim/plugged')
 
   Plug 'w0rp/ale'
   Plug 'christoomey/vim-tmux-navigator'
+
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
 call plug#end()
+
+augroup vimrc
+  autocmd!
+augroup END
+
+" Configure tabs
+set expandtab       " Convert tabs to spaces
+set shiftwidth=2    " << and >> shift 2 spaces
+set softtabstop=2   " Tab is 2 spaces
 
 " colorscheme
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -31,4 +43,15 @@ if has('termguicolors')
 endif
 " end colorscheme
 
+set noshowmode
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+
 let g:terraform_align=1
+
+" Line numbers
+set relativenumber
+set number
+
+autocmd vimrc BufEnter,WinEnter,InsertLeave * set cursorline
+autocmd vimrc BufLeave,WinLeave,InsertEnter * set nocursorline
