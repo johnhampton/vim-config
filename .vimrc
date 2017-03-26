@@ -16,6 +16,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'morhetz/gruvbox'
 
   Plug 'w0rp/ale'
+  Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
 " colorscheme
