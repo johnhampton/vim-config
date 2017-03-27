@@ -20,6 +20,7 @@ call plug#begin('~/.vim/plugged')
 
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
+  Plug 'edkolev/tmuxline.vim'
 call plug#end()
 
 augroup vimrc
@@ -38,6 +39,8 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set background=dark
 colorscheme gruvbox
 
+" Disabled because of problems with true colors
+let g:airline#extensions#tmuxline#enabled = 0
 if has('termguicolors')
   set termguicolors
 endif
