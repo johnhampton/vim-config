@@ -59,6 +59,12 @@ set expandtab       " Convert tabs to spaces
 set shiftwidth=2    " << and >> shift 2 spaces
 set softtabstop=2   " Tab is 2 spaces
 
+" Swapfile config
+if isdirectory($HOME . '/.vim/tmp') == 0
+  :silent !mkdir -p ~/.vim/tmp > /dev/null 2>&1
+endif
+set directory=~/.vim/tmp//,/var/tmp//,/tmp//,.
+
 " colorscheme
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
@@ -189,7 +195,9 @@ endfunction
 
 " mappings
 nnoremap <leader>ut :<C-u>Denite file_rec<cr>
+nnoremap <leader>t :<C-u>Denite file_rec<cr>
 nnoremap <leader>ue :<C-u>Denite buffer<cr>
+nnoremap <leader>e :<C-u>Denite buffer<cr>
 nnoremap <leader>ug :<C-u>Denite grep<cr>
 
 nnoremap <leader>gs :<C-u>Gstatus<cr>
