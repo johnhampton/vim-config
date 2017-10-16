@@ -45,6 +45,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'jiangmiao/auto-pairs'
 
   Plug 'terryma/vim-multiple-cursors'
+  Plug 'vim-scripts/Rename2'
 call plug#end()
 
 let g:mapleader="\<Space>"
